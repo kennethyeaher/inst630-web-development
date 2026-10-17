@@ -23,7 +23,7 @@ These projects show the clearest progression from an interface's appearance to i
 
 **One dataset, several ways to make a decision.** Shared filters coordinate charts, a map, cards, and a temporary comparison shortlist. Chart selections narrow the collection; exact-value tables offer another route through the same data. Each library has a text fallback.
 
-<img src="projects/07-external-libraries/docs/assets/explorer.png" alt="Restaurant library lab with shared filters, data views, and a comparison workflow." width="100%">
+<img src="projects/07-external-libraries/docs/assets/ratings.png" alt="Restaurant library lab showing a horizontal ratings chart, sample mean, and an exact-value table with Explore buttons." width="100%">
 
 [Open original demo](https://kennethyeaher.github.io/externalLibraries/tutorial_7_external/) · [Read the project](projects/07-external-libraries/README.md) · [Inspect chart preparation](projects/07-external-libraries/tutorial_7_external/chart-data.js)
 
