@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore eight sample restaurants through a cuisine chart, interactive map, and animated cards.">
+    <title>Restaurant Library Lab | External Libraries</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script type="module" src="script.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to examples</a>
+<div class="container">
+    <header>
+        <p class="eyebrow">INST630 / Tutorial 7 / External libraries</p>
+        <h1>One menu.<br>Three perspectives.</h1>
+        <p>Count cuisines, explore sample locations, and bring restaurant cards into view.</p>
+        <nav aria-label="Examples"><a href="#chart-example">Cuisine chart</a><a href="#map-example">Restaurant map</a><a href="#animation-example">Animated cards</a></nav>
+    </header>
+    <main id="main">
+        <section class="loading-section" aria-labelledby="load-heading">
+            <h2 id="load-heading">Start with the restaurant data</h2>
+            <p>All three examples use the same eight records from the course dataset. Filters affect every view.</p>
+            <p id="loading-status" role="status">Ready to load restaurants.</p>
+            <button id="load-data-button">Load restaurant data</button>
+            <noscript><p>JavaScript is required for these demos. You can still inspect restaurants.json in the repository.</p></noscript>
+        </section>
+        <section class="status-section" aria-labelledby="library-heading">
+            <h2 id="library-heading">Library availability</h2>
+            <div class="status-grid">
+                <p><strong>Chart.js</strong><span id="chart-status">Checking…</span></p>
+                <p><strong>Leaflet</strong><span id="leaflet-status">Checking…</span></p>
+                <p><strong>GSAP</strong><span id="gsap-status">Checking…</span></p>
+            </div>
+            <p class="note">If a library cannot load, the restaurant information stays available in text.</p>
+        </section>
+        <section class="explorer" aria-labelledby="explore-heading">
+            <p class="eyebrow">Explore / Compare / Decide</p>
+            <h2 id="explore-heading">Find a restaurant that fits</h2>
+            <p>Search and filter once. The chart, map, and cards show the same results.</p>
+            <form id="explore-form">
+                <label for="restaurant-search">Name, cuisine, or neighborhood<input id="restaurant-search" type="search" placeholder="Try College Park" disabled></label>
+                <label for="cuisine-filter">Cuisine<select id="cuisine-filter" disabled><option value="all">All cuisines</option></select></label>
+                <label for="price-filter">Price<select id="price-filter" disabled><option value="all">Any price</option><option>$</option><option>$$</option><option>$$$</option><option>$$$$</option></select></label>
+                <label for="rating-filter">Minimum rating<select id="rating-filter" disabled><option value="0">Any rating</option><option value="4">4.0 or higher</option><option value="4.5">4.5 or higher</option></select></label>
+                <label for="sort-order">Sort results<select id="sort-order" disabled><option value="name">Name</option><option value="rating">Highest rating</option><option value="price">Lowest price</option></select></label>
+                <button id="reset-filters" type="button" disabled>Reset filters</button>
+            </form>
+            <p id="results-summary" role="status">Load restaurant data to explore.</p>
+            <button id="download-results" disabled>Download results as JSON</button>
+        </section>
+        <section class="comparison" id="comparison" aria-labelledby="compare-heading">
+            <h2 id="compare-heading">Compare your shortlist</h2>
+            <p>Use the Compare buttons on restaurant cards to keep up to three choices side by side. Your shortlist stays selected when you change filters.</p>
+            <p id="compare-message" role="status">No restaurants selected.</p>
+            <div id="comparison-table" class="table-scroll"></div>
+            <button id="clear-shortlist" disabled>Clear shortlist</button>
+        </section>
+        <section id="examples-section" aria-label="Three library examples">
+            <article class="example-card" id="chart-example">
+                <div class="example-heading"><p class="eyebrow">Chart.js / Compare</p><h2>Explore the restaurant data</h2></div>
+                <p>Count restaurants in each cuisine. This sample has one restaurant per cuisine, so every bar has the same height.</p>
+                <div class="controls"><button id="chart-button" class="demo-button" disabled>Show cuisine chart</button><label for="chart-metric">Chart view<select id="chart-metric" disabled><option value="cuisine">Cuisine counts</option><option value="rating">Restaurant ratings</option><option value="neighborhood">Cuisine mix by neighborhood</option><option value="price">Price tier vs. rating</option></select></label><button id="download-chart" disabled>Download chart as PNG</button></div>
+                <p id="chart-insight" class="note">Start with cuisine counts, then compare ratings, neighborhoods, or price tiers.</p>
+                <p id="chart-message" role="status" tabindex="-1">Load the dataset to begin.</p>
+                <div class="chart-container"><canvas id="restaurant-chart" role="img" aria-label="Restaurant counts by cuisine; exact values appear in the table below"></canvas></div>
+                <div id="chart-table" class="table-scroll"></div>
+                <details><summary>See the integration pattern</summary><pre><code>new Chart(canvas, { type: 'bar', data: processedData });</code></pre></details>
+            </article>
+            <article class="example-card" id="map-example">
+                <div class="example-heading"><p class="eyebrow">Leaflet / Locate</p><h2>A different view of the neighborhood</h2></div>
+                <p class="note">Illustrative locations only. The supplied dataset has no coordinates or street addresses. These markers are stable sample positions, not directions to real restaurants.</p>
+                <button id="map-button" class="demo-button" disabled>Show restaurant map</button>
+                <p id="map-message" role="status">Load the dataset to begin.</p>
+                <div id="restaurant-map" aria-label="Interactive map of illustrative restaurant positions"></div>
+                <ul id="location-list" aria-label="Restaurants shown on the map"></ul>
+                <details><summary>See the integration pattern</summary><pre><code>L.map(element).addLayer(markers);</code></pre></details>
+            </article>
+            <article class="example-card" id="animation-example">
+                <div class="example-heading"><p class="eyebrow">GSAP / Reveal</p><h2>Meet the restaurants</h2></div>
+                <p>A staggered entrance reveals the same records. Cards remain visible if animation is unavailable or reduced motion is enabled.</p>
+                <button id="animation-button" class="demo-button" disabled>Animate restaurant cards</button>
+                <p id="animation-message" role="status">Load the dataset to begin.</p>
+                <p><a href="#comparison">View your comparison shortlist</a></p>
+                <div id="restaurant-cards" class="cards-container"></div>
+                <details><summary>See the integration pattern</summary><pre><code>gsap.fromTo(elements, fromState, toState);</code></pre></details>
+            </article>
+        </section>
+        <section class="pattern-summary">
+            <h2>The shared integration pattern</h2>
+            <ol class="pattern-grid"><li><strong>CDN</strong> Include a specific library version.</li><li><strong>Check</strong> Verify the library is available.</li><li><strong>Process</strong> Shape the shared records for each view.</li><li><strong>Initialize</strong> Create the chart, map, or animation.</li><li><strong>Error handling</strong> Keep useful text when an enhancement fails.</li></ol>
+        </section>
+        <section class="assignment-planning">
+            <h2>Choosing a library for Project 2</h2>
+            <p>Choose Chart.js when the task is comparing counts, ratings, or trends. Choose Leaflet when verified locations and geographic filtering help someone decide. Choose GSAP when a coordinated transition explains a meaningful change that simpler CSS cannot handle well.</p>
+            <p>For this dataset, Chart.js is the strongest starting point: cuisine and rating already exist. Leaflet first needs real coordinates. Animation supports the experience but does not add new information.</p>
+        </section>
+    </main>
+    <footer>Kenneth Yeaher · University of Maryland · Sample restaurant data</footer>
+</div>
+</body>
+</html>

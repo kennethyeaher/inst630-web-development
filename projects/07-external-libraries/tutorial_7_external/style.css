@@ -1,0 +1,94 @@
+/* Use a small shared palette so data and controls remain easy to distinguish. */
+:root { color-scheme: light; --ink: #182d47; --muted: #46586c; --blue: #244f9d; --green: #237569; --line: #cad5e2; --paper: #f4f7fc; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.65 system-ui, sans-serif; }
+.container { max-width: 1120px; margin: auto; padding: 32px; }
+h1, h2, h4, p { margin-top: 0; }
+h1 { font: 600 clamp(2.6rem, 7vw, 5rem)/1.05 Georgia, serif; letter-spacing: -0.04em; margin-bottom: 24px; }
+h2 { font-size: 1.55rem; line-height: 1.25; }
+h4 { line-height: 1.35; margin-bottom: 12px; }
+p { margin-bottom: 16px; }
+a { color: var(--blue); }
+header { padding: 48px; background: var(--ink); color: white; border-radius: 16px; margin-bottom: 24px; }
+header > p:last-of-type { max-width: 560px; color: #d5e1f2; }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.75rem; font-weight: 700; }
+header .eyebrow { color: #b6dbcf; }
+nav { display: flex; gap: 12px 24px; flex-wrap: wrap; margin-top: 28px; }
+nav a { color: white; text-underline-offset: 5px; }
+section.loading-section, .status-section, .pattern-summary, .assignment-planning, .example-card { background: white; padding: 32px; border: 1px solid var(--line); border-radius: 12px; margin-bottom: 24px; }
+.loading-section { border-left: 5px solid var(--blue) !important; }
+#loading-status { font-weight: 600; }
+.status-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.status-grid p { margin-bottom: 0; }
+.status-grid strong { display: block; margin-bottom: 6px; }
+.status-loaded { color: #18594f; }
+.status-failed { color: #94351c; }
+.note { color: var(--muted); font-size: 0.92rem; }
+.status-section .note { margin: 20px 0 0; }
+button, select { font: inherit; min-height: 46px; border-radius: 6px; }
+button { background: var(--blue); border: 1px solid var(--blue); color: white; padding: 10px 20px; cursor: pointer; font-weight: 650; }
+button:hover:not(:disabled) { background: #193c7c; }
+button:disabled { background: #e3e9f2; border-color: #bdcbdc; color: #46586c; cursor: not-allowed; }
+:focus-visible { outline: 3px solid #b85b09; outline-offset: 4px; }
+select { display: block; padding: 8px 36px 8px 12px; border: 1px solid var(--line); color: var(--ink); background: white; width: 100%; }
+.controls { display: flex; align-items: end; gap: 24px; flex-wrap: wrap; }
+.controls label { font-size: 0.9rem; }
+.example-heading .eyebrow { color: var(--green); margin-bottom: 10px; }
+[role="status"] { margin-top: 16px; }
+.chart-container { position: relative; height: 320px; margin: 20px 0; }
+.chart-container:has(canvas[hidden]) { display: none; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+caption { text-align: left; font-weight: 650; padding-bottom: 8px; }
+th, td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--line); }
+th { background: var(--paper); }
+#restaurant-map { height: 400px; border-radius: 8px; border: 1px solid var(--line); background: #e7eef4; z-index: 0; }
+#location-list { columns: 2; padding-left: 24px; font-size: 0.88rem; }
+#location-list li { break-inside: avoid; margin-bottom: 10px; }
+.cards-container { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.restaurant-card { opacity: 1; background: var(--paper); border-left: 3px solid var(--green); border-radius: 5px; padding: 24px; }
+.restaurant-card p { font-size: 0.9rem; color: var(--muted); margin-bottom: 4px; }
+.restaurant-card p:last-child { margin-bottom: 0; }
+details { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 16px; }
+summary { cursor: pointer; font-weight: 600; }
+pre { overflow-x: auto; background: var(--paper); padding: 16px; font-size: 0.85rem; }
+.pattern-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding-left: 20px; gap: 28px; font-size: 0.9rem; }
+.pattern-grid strong { display: block; }
+footer { padding: 8px 0 32px; color: var(--muted); font-size: 0.85rem; }
+.skip-link { position: fixed; top: 12px; left: -10000px; background: white; padding: 12px; z-index: 9999; }
+.skip-link:focus { left: 12px; }
+[hidden] { display: none !important; }
+/* Stack the examples on small screens without shrinking the controls. */
+@media (max-width: 650px) {
+    .container { padding: 16px; }
+    header { padding: 28px 24px; }
+    section.loading-section, .status-section, .pattern-summary, .assignment-planning, .example-card { padding: 24px 20px; }
+    .status-grid, .cards-container, .pattern-grid { grid-template-columns: 1fr; }
+    .status-grid { gap: 16px; }
+    .pattern-grid { gap: 12px; }
+    #location-list { columns: 1; }
+    .controls { display: grid; gap: 16px; }
+    button { width: 100%; }
+    #restaurant-map { height: 320px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Keep exploration controls and comparison details readable at every viewport width. */
+.explorer, .comparison { background: white; padding: 32px; border: 1px solid var(--line); border-radius: 12px; margin-bottom: 24px; }
+#explore-form { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: end; }
+#explore-form label { font-size: 0.9rem; font-weight: 600; }
+input { width: 100%; min-height: 46px; font: inherit; padding: 8px 12px; border: 1px solid var(--line); border-radius: 6px; }
+.table-scroll { overflow-x: auto; }
+.comparison table { min-width: 480px; }
+.restaurant-card button { margin-top: 16px; background: white; color: var(--blue); }
+.restaurant-card button[aria-pressed="true"] { background: var(--blue); color: white; }
+#location-list button { display: block; font-size: 0.85rem; min-height: 36px; padding: 4px 10px; margin-top: 6px; background: white; color: var(--blue); }
+@media (max-width: 650px) {
+    .explorer, .comparison { padding: 24px 20px; }
+    #explore-form { grid-template-columns: 1fr; }
+}
+
+/* Let wide chart tables scroll within their own region rather than widening the page. */
+#chart-table button { min-height: 36px; padding: 4px 12px; background: white; color: var(--blue); }
+#chart-table th, #chart-table td { white-space: nowrap; }
+#chart-insight { border-left: 3px solid var(--green); padding-left: 14px; margin-top: 20px; }
