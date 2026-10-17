@@ -2,6 +2,8 @@
 
 ## Direction
 
+The project is named **INST360MSC**: a midsemester checkpoint for **Programming Human-Centered Interfaces**. The cover names the project directly and frames the work as applying the first half of the course.
+
 The collection uses interface specimens: actual project screens arranged to show an implementation decision. The cover introduces the body of work, the atlas shows course progression, and each featured plate answers a different review question. The recipe compares before and after; RSVP compares desktop and mobile; the library lab compares representations of the same data.
 
 ## Tokens

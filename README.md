@@ -1,17 +1,21 @@
 <p align="center">
 <picture>
   <source media="(max-width: 600px)" srcset="docs/assets/cover-mobile.png">
-  <img src="docs/assets/cover.png" alt="From markup to meaningful interaction. Kenneth Yeaher's INST630 collection combines seven runnable projects, readings, HTML history, and publishing." width="100%">
+  <img src="docs/assets/cover.png" alt="INST360MSC. Programming Human-Centered Interfaces: my midsemester checkpoint, applying structure, layout, behavior, and data." width="100%">
 </picture>
 </p>
 
-<p align="center"><strong>Frontend development through an interaction design lens.</strong><br>
-A University of Maryland course collection: seven working builds, textbook-supported design reasoning, and a study companion for the full course sequence.</p>
+# INST360MSC
+
+<p align="center"><strong>Programming Human-Centered Interfaces · Midsemester checkpoint</strong><br>
+Putting the first half of the semester into practice through interface design and frontend development.</p>
+
+This is my project for the halfway point of the course: a place to bring together what I have learned about HTML, CSS, JavaScript, data, and interaction design. The seven builds show that progression in working code, supported by design case studies and a reading companion. The [course map](docs/course-map.md) connects the work to the assignments.
 
 <p align="center">
 <a href="docs/course-map.md"><img src="https://img.shields.io/badge/course_map-16_components-625879?style=flat-square" alt="Course map: 16 components"></a>
 <img src="https://img.shields.io/badge/stack-HTML_%C2%B7_CSS_%C2%B7_JavaScript-3757c8?style=flat-square" alt="HTML, CSS, and JavaScript">
-<a href="https://github.com/kennethyeaher/inst630-web-development/actions/workflows/collection-checks.yml"><img src="https://img.shields.io/github/actions/workflow/status/kennethyeaher/inst630-web-development/collection-checks.yml?branch=main&amp;style=flat-square&amp;label=checks" alt="Current collection checks"></a>
+<a href="https://github.com/kennethyeaher/INST360MSC/actions/workflows/collection-checks.yml"><img src="https://img.shields.io/github/actions/workflow/status/kennethyeaher/INST360MSC/collection-checks.yml?branch=main&amp;style=flat-square&amp;label=checks" alt="Current collection checks"></a>
 </p>
 
 <p align="center"><a href="#selected-work">Selected work</a> · <a href="#the-full-course">The full course</a> · <a href="docs/case-studies.md">Case studies</a> · <a href="docs/reading-companion.md">Reading companion</a> · <a href="docs/midterm-guide.md">Midterm practice</a></p>
@@ -67,7 +71,7 @@ A University of Maryland course collection: seven working builds, textbook-suppo
 
 <img src="docs/assets/atlas.png" alt="Homework progression: semantic HTML, Grid and Flexbox, recipe redesign, JavaScript interaction, array methods, async loading, and external libraries." width="100%">
 
-The collection follows the course sequence, including the discussion and publishing work alongside the builds.
+This checkpoint brings together the first half of the course, including the discussion and publishing work alongside the builds.
 
 | Course strand | Included here | Open |
 | --- | --- | --- |
@@ -103,8 +107,8 @@ The [case studies](docs/case-studies.md) follow the problem, implementation, rea
 ## Run and inspect
 
 ```sh
-git clone https://github.com/kennethyeaher/inst630-web-development.git
-cd inst630-web-development
+git clone https://github.com/kennethyeaher/INST360MSC.git
+cd INST360MSC
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
