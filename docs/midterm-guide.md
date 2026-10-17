@@ -1,6 +1,6 @@
 # Midterm practice through the projects
 
-Use this as source-based practice alongside the course slides and exam instructions. It covers the collected exercises, not a confirmed list of exam topics. Try each prompt before opening its answer check.
+Use this as source-based practice alongside the course slides and exam instructions. The [full course map](course-map.md) covers all 16 listed components; the [reading companion](reading-companion.md) connects the discussion topics with the available textbooks. It covers the collected exercises, not a confirmed list of exam topics. Try each prompt before opening its answer check.
 
 ## 1. Structure before style
 
