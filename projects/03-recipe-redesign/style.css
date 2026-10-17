@@ -1,0 +1,663 @@
+/* shared colors, type, and spacing keep the recipe consistent */
+:root {
+    color-scheme: light;
+    --color-ink: #202b43;
+    --color-blue: #2445a0;
+    --color-paper: #fffdf8;
+    --color-mist: #e7edf8;
+    --color-butter: #edc578;
+    --font-body: Arial, sans-serif;
+    --font-heading: Georgia, serif;
+    --text-small: 0.8125rem;
+    --text-body: 1rem;
+    --text-heading: clamp(1.75rem, 3vw, 2.125rem);
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+    --space-8: 4rem;
+    --page-width: 76rem;
+}
+
+/* start with a single column that works on a narrow phone */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+h1,
+h2,
+h3,
+p,
+figure,
+dl,
+dd {
+    margin: 0;
+}
+
+a {
+    color: var(--color-blue);
+    text-underline-offset: 0.2em;
+}
+
+a:hover {
+    text-decoration-thickness: 0.15em;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+:focus-visible {
+    outline: 3px solid var(--color-blue);
+    outline-offset: 5px;
+}
+
+[id] {
+    scroll-margin-top: var(--space-5);
+}
+
+.skip-link {
+    position: absolute;
+    z-index: 2;
+    top: var(--space-4);
+    left: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    transform: translateY(-200%);
+    background: var(--color-paper);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+.site-header,
+.site-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    width: min(calc(100% - 2 * var(--space-4)), var(--page-width));
+    margin-inline: auto;
+}
+
+.site-header {
+    min-height: 5.5rem;
+    padding-block: var(--space-4);
+    border-bottom: 1px solid var(--color-blue);
+}
+
+.site-name {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--color-blue);
+    font-family: var(--font-heading);
+    font-size: 1.3125rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.site-mark {
+    font-size: 1.75rem;
+    line-height: 1;
+}
+
+.site-description {
+    display: none;
+    font-size: var(--text-small);
+}
+
+.recipe {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+        "header"
+        "summary"
+        "photo"
+        "ingredients"
+        "instructions"
+        "footer";
+    gap: var(--space-6);
+    width: min(calc(100% - 2 * var(--space-4)), var(--page-width));
+    margin: var(--space-6) auto var(--space-7);
+}
+
+.recipe > * {
+    min-width: 0;
+}
+
+/* the opening pairs a clear title with an actual cookie photograph */
+.recipe-header {
+    grid-area: header;
+    align-self: center;
+}
+
+.eyebrow,
+.section-detail,
+.recipe-meta dt {
+    font-size: var(--text-small);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.eyebrow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+    color: var(--color-blue);
+}
+
+h1 {
+    max-width: 12ch;
+    color: var(--color-blue);
+    font-family: var(--font-heading);
+    font-size: clamp(2.6rem, 5.15vw, 4.5rem);
+    font-weight: 400;
+    letter-spacing: -0.055em;
+    line-height: 1.04;
+}
+
+.title-period {
+    color: var(--color-ink);
+}
+
+.recipe-description {
+    max-width: 43ch;
+    margin-top: var(--space-5);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+}
+
+.recipe-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    min-height: 3rem;
+    margin-top: var(--space-5);
+    padding: var(--space-3) var(--space-5);
+    border: 1px solid var(--color-blue);
+    border-radius: 0.25rem;
+    background: var(--color-blue);
+    color: var(--color-paper);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.recipe-link:hover {
+    background: var(--color-ink);
+}
+
+.recipe-link:focus-visible {
+    outline-offset: 4px;
+}
+
+.recipe-photo {
+    grid-area: photo;
+    align-self: center;
+    position: relative;
+    padding: var(--space-3);
+    border-radius: 0.5rem;
+    background-color: var(--color-mist);
+    background-image:
+        linear-gradient(90deg, transparent 50%, var(--color-paper) 50%),
+        linear-gradient(transparent 50%, var(--color-paper) 50%);
+    background-size: 1.5rem 1.5rem;
+}
+
+.recipe-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 28rem;
+    aspect-ratio: 1.12;
+    border-radius: 0.25rem;
+    object-fit: cover;
+}
+
+.recipe-photo figcaption {
+    padding: var(--space-2);
+    background: var(--color-paper);
+    font-size: 0.6875rem;
+    text-align: center;
+}
+
+/* flex rows let timing facts wrap without shrinking their text */
+.recipe-summary {
+    grid-area: summary;
+    padding: var(--space-5);
+    border-radius: 0.5rem;
+    background: var(--color-mist);
+}
+
+.recipe-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5) var(--space-4);
+}
+
+.recipe-meta > div {
+    flex: 1 1 6.25rem;
+}
+
+.recipe-meta dt {
+    margin-bottom: var(--space-1);
+    color: var(--color-blue);
+}
+
+.recipe-meta dd {
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.recipe-meta dd span {
+    font-size: var(--text-small);
+    font-weight: 400;
+}
+
+.timing-note {
+    margin-top: var(--space-4);
+    font-size: var(--text-small);
+}
+
+/* ingredients and steps share headings but remain distinct regions */
+.ingredients-section {
+    grid-area: ingredients;
+    align-self: start;
+    padding: var(--space-5);
+    border: 1px solid var(--color-blue);
+    border-radius: 0.5rem;
+}
+
+.instructions-section {
+    grid-area: instructions;
+}
+
+.section-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-4);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-blue);
+}
+
+h2 {
+    color: var(--color-blue);
+    font-family: var(--font-heading);
+    font-size: var(--text-heading);
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    line-height: 1.2;
+}
+
+.section-detail {
+    color: var(--color-blue);
+    font-size: 0.6875rem;
+}
+
+.ingredients-list {
+    margin: var(--space-3) 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.ingredients-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    border-bottom: 1px solid var(--color-mist);
+    line-height: 1.5;
+}
+
+/* native checkboxes keep the checklist usable without scripts */
+.checklist-hint {
+    margin-top: var(--space-4);
+    font-size: var(--text-small);
+}
+
+.ingredients-list label {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    width: 100%;
+    min-height: 3rem;
+    padding-block: var(--space-3);
+    cursor: pointer;
+}
+
+.ingredients-list input {
+    flex: 0 0 1.125rem;
+    width: 1.125rem;
+    height: 1.125rem;
+    margin: 0.1875rem 0 0;
+    accent-color: var(--color-blue);
+    cursor: pointer;
+}
+
+.ingredients-list input:checked + span {
+    text-decoration: line-through;
+    text-decoration-thickness: 0.1em;
+}
+
+.ingredients-list label:hover {
+    background: var(--color-mist);
+}
+
+.reset-checklist {
+    min-height: 2.75rem;
+    margin-top: var(--space-4);
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--color-blue);
+    border-radius: 0.25rem;
+    background: var(--color-paper);
+    color: var(--color-blue);
+    font-size: var(--text-small);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.reset-checklist:hover {
+    background: var(--color-mist);
+}
+
+.ingredients-list strong {
+    font-weight: 700;
+}
+
+.ingredients-list em {
+    font-style: normal;
+    font-size: var(--text-small);
+}
+
+.prep-note {
+    margin-top: var(--space-5);
+    padding: var(--space-4);
+    border-radius: 0.25rem;
+    background: var(--color-butter);
+    font-size: var(--text-small);
+}
+
+.prep-note h3 {
+    margin-bottom: var(--space-2);
+    font-size: var(--text-body);
+}
+
+.instructions-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.instruction-step {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    padding-block: var(--space-5);
+    border-bottom: 1px solid var(--color-mist);
+}
+
+.step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 2.25rem;
+    height: 2.25rem;
+    border: 1px solid var(--color-blue);
+    border-radius: 50%;
+    color: var(--color-blue);
+    font-size: var(--text-small);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.instruction-step h3 {
+    margin-bottom: var(--space-2);
+    font-size: 1.0625rem;
+    line-height: 1.4;
+}
+
+.instruction-step p {
+    max-width: 56ch;
+}
+
+/* the footer keeps secondary recipe details out of the cooking flow */
+.recipe-footer {
+    grid-area: footer;
+    padding: var(--space-6);
+    border-radius: 0.5rem;
+    background: var(--color-mist);
+    font-size: var(--text-small);
+    text-align: center;
+}
+
+.recipe-footer p + p {
+    margin-top: var(--space-2);
+}
+
+.closing-note {
+    color: var(--color-blue);
+    font-family: var(--font-heading);
+    font-size: 1.625rem;
+    line-height: 1.25;
+}
+
+.recipe-footer > a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 2.75rem;
+    margin-top: var(--space-3);
+}
+
+.site-footer {
+    flex-wrap: wrap;
+    padding-block: var(--space-5);
+    border-top: 1px solid var(--color-blue);
+    font-size: var(--text-small);
+}
+
+/* reorganize the named regions when there is room for two columns */
+@media (min-width: 48rem) {
+    .site-header,
+    .site-footer,
+    .recipe {
+        width: min(calc(100% - 2 * var(--space-7)), var(--page-width));
+    }
+
+    .site-description {
+        display: inline;
+    }
+
+    .recipe {
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+        grid-template-areas:
+            "header photo"
+            "summary summary"
+            "ingredients instructions"
+            "footer footer";
+        gap: var(--space-7);
+        margin-top: var(--space-7);
+    }
+
+    .recipe-header {
+        padding-block: var(--space-5);
+    }
+
+    .recipe-summary {
+        padding: var(--space-5) var(--space-6);
+    }
+
+    .recipe-meta {
+        gap: var(--space-5);
+    }
+
+    .recipe-meta > div {
+        flex-basis: 5.5rem;
+    }
+
+    .ingredients-section {
+        padding: var(--space-5);
+    }
+}
+
+@media (min-width: 70rem) {
+    .recipe {
+        column-gap: var(--space-8);
+    }
+
+    .ingredients-section {
+        padding: var(--space-6);
+    }
+}
+
+/* remove decoration and preserve useful cooking content on paper */
+@media print {
+    @page {
+        margin: 0.55in;
+    }
+
+    body {
+        background: none;
+        font-size: 10pt;
+        line-height: 1.4;
+    }
+
+    .site-header,
+    .site-footer,
+    .skip-link,
+    .recipe-photo,
+    .recipe-link,
+    .reset-checklist,
+    .checklist-hint,
+    .recipe-footer {
+        display: none;
+    }
+
+    :focus-visible {
+        outline: none;
+    }
+
+    .recipe {
+        display: block;
+        width: 100%;
+        margin: 0;
+    }
+
+    .recipe-header {
+        padding: 0;
+    }
+
+    .eyebrow {
+        margin-bottom: var(--space-2);
+    }
+
+    h1 {
+        max-width: none;
+        font-size: 27pt;
+    }
+
+    h1 br {
+        display: none;
+    }
+
+    .recipe-description {
+        max-width: none;
+        margin-top: var(--space-3);
+        font-size: 10pt;
+    }
+
+    .recipe-summary {
+        margin-block: var(--space-4);
+        padding: var(--space-3) 0;
+        background: none;
+        border-block: 1px solid var(--color-ink);
+    }
+
+    .recipe-meta {
+        flex-wrap: nowrap;
+        gap: var(--space-3);
+    }
+
+    .recipe-meta dd {
+        font-size: 16pt;
+    }
+
+    .recipe-meta dt,
+    .timing-note {
+        font-size: 8pt;
+    }
+
+    .ingredients-section {
+        margin-bottom: var(--space-5);
+        padding: 0;
+        border: 0;
+    }
+
+    .ingredients-list {
+        columns: 2;
+        column-gap: var(--space-6);
+    }
+
+    .ingredients-list li {
+        break-inside: avoid;
+    }
+
+    .ingredients-list label {
+        min-height: 0;
+        padding-block: var(--space-1);
+    }
+
+    .ingredients-list input:checked + span {
+        text-decoration: none;
+    }
+
+    .prep-note {
+        margin-top: var(--space-3);
+        padding: 0;
+        background: none;
+    }
+
+    .section-heading {
+        padding-bottom: var(--space-2);
+        break-after: avoid;
+    }
+
+    h2 {
+        font-size: 18pt;
+    }
+
+    .instruction-step {
+        gap: var(--space-3);
+        padding-block: var(--space-3);
+        break-inside: avoid;
+    }
+
+    .instruction-step h3 {
+        margin-bottom: var(--space-1);
+        font-size: 11pt;
+    }
+
+    .instruction-step p {
+        max-width: none;
+    }
+}

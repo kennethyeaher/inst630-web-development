@@ -1,0 +1,3 @@
+# Submission reflection draft
+
+I organized the page around what someone needs while baking, with the timing first and separate sections for ingredients and instructions. I gave the title the most visual weight, then used clear headings, bold quantities, and numbered steps to make the recipe easier to scan. The ingredient checkboxes help someone keep track of what they have already added without losing their place. The main responsive challenge was keeping the two columns readable on smaller screens, so I stacked the sections below 48rem and adjusted text wrapping after enlarged headings caused overflow on a narrow screen.
