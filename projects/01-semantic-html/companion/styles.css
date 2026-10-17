@@ -1,0 +1,200 @@
+/* A restrained palette keeps the paper and its reading order prominent. */
+:root {
+  color-scheme: light;
+  --ink: #282337;
+  --muted: #605a6d;
+  --accent: #56376d;
+  --accent-light: #f1eaf6;
+  --ground: #efedf4;
+  --paper: #ffffff;
+  --rule: #d5cfdf;
+  --focus: #154f83;
+  --body-font: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+  --letter-font: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-padding-top: 2rem; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--body-font);
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+a { color: var(--accent); text-underline-offset: 0.22em; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 5px;
+  border-radius: 2px;
+}
+h1, h2, h3, p { margin-top: 0; }
+.skip-link {
+  position: absolute;
+  top: 0.75rem;
+  left: 1rem;
+  z-index: 2;
+  padding: 0.65rem 1rem;
+  background: var(--paper);
+  transform: translateY(-200%);
+}
+.skip-link:focus { transform: translateY(0); }
+.site-header, .site-footer {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding: 2rem clamp(1.25rem, 4vw, 4rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem 2rem;
+}
+.wordmark {
+  color: var(--ink);
+  font-size: 1.3rem;
+  font-weight: 750;
+  letter-spacing: -0.05em;
+  text-decoration: none;
+}
+.wordmark-dot { color: var(--accent); }
+.site-nav { display: flex; flex-wrap: wrap; gap: 0.75rem 1.75rem; font-size: 0.9rem; }
+.site-nav a { display: inline-block; padding-block: 0.35rem; }
+.study {
+  max-width: 1200px;
+  margin: 2.5rem auto 0;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.45fr);
+  align-items: start;
+  gap: 4.5rem 4rem;
+}
+.introduction { padding-top: 3rem; }
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.73rem;
+  font-weight: 750;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+h1 {
+  font-family: var(--letter-font);
+  font-size: clamp(2.9rem, 5vw, 4.9rem);
+  line-height: 1.06;
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  margin-bottom: 1.75rem;
+}
+.intro-copy { max-width: 31ch; font-size: 1.05rem; }
+.example-label { color: var(--muted); font-size: 0.82rem; margin-block: 1.75rem; }
+.read-link { font-weight: 700; }
+.read-link span { margin-left: 0.75rem; }
+.study-index { border-top: 1px solid var(--rule); margin-top: 4rem; padding-top: 1.5rem; }
+.study-index .eyebrow { margin-bottom: 0.75rem; }
+.study-index ul { padding-left: 1.15rem; color: var(--muted); font-size: 0.85rem; }
+.study-index li { margin-bottom: 0.5rem; }
+
+/* The invitation remains a complete document when surrounding UI is hidden. */
+.letter {
+  min-width: 0;
+  background: var(--paper);
+  border-top: 6px solid var(--accent);
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  box-shadow: 0 5px 22px #2823370b;
+  font-family: var(--letter-font);
+  font-size: 1.1rem;
+  line-height: 1.75;
+}
+.letter:focus { outline: 3px solid var(--focus); outline-offset: 6px; }
+.document-kind {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-family: var(--body-font);
+  color: var(--accent);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 2.5rem;
+}
+.document-kind span { color: var(--muted); }
+.letter-origin { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1rem; }
+.sender { font-size: 0.85rem; line-height: 1.5; font-weight: 700; }
+.letter-date { font-size: 0.8rem; color: var(--muted); }
+.letter h2 {
+  font-size: clamp(2rem, 3.3vw, 3.1rem);
+  font-weight: 500;
+  line-height: 1.13;
+  letter-spacing: -0.035em;
+  margin-block: 1.5rem 2rem;
+}
+.letter-body > p { margin-bottom: 1.3rem; }
+.letter h3 {
+  font-family: var(--body-font);
+  font-size: 0.82rem;
+  color: var(--accent);
+  letter-spacing: 0.025em;
+  margin-bottom: 1rem;
+}
+.event-section { background: var(--accent-light); padding: 1.5rem; margin-block: 2rem; }
+.event-details { margin: 0; font-size: 0.95rem; }
+.event-details > div { display: grid; grid-template-columns: 3.6rem minmax(0, 1fr); gap: 0.5rem; margin-top: 0.85rem; }
+.event-details dt { font-weight: 700; }
+.event-details dd { margin: 0; }
+.preparation { margin-block: 2rem; }
+.preparation ol { padding-left: 1.3rem; font-size: 1rem; }
+.preparation li { padding-left: 0.3rem; margin-bottom: 0.65rem; }
+.letter-signature { padding-top: 1.5rem; }
+.letter-signature p { margin-bottom: 0.4rem; }
+.signature { color: var(--accent); font-style: italic; }
+
+.design-notes {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.45fr);
+  gap: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--rule);
+}
+.notes-intro h2 { font-size: 1.8rem; line-height: 1.25; letter-spacing: -0.035em; }
+.notes-intro > p:not(.eyebrow) { font-size: 0.9rem; color: var(--muted); }
+.print-hint { margin-top: 1.5rem; }
+.design-note { border-bottom: 1px solid var(--rule); padding-block: 1.15rem; }
+.design-note:first-child { padding-top: 0; }
+.design-note summary { cursor: pointer; font-weight: 650; padding: 0.25rem; }
+.design-note summary::marker { color: var(--accent); }
+.design-note p { margin: 1rem 0 0 1.2rem; max-width: 58ch; color: var(--muted); font-size: 0.95rem; }
+.site-footer { color: var(--muted); font-size: 0.8rem; padding-block: 4rem 2rem; }
+.site-footer p { margin-bottom: 0; }
+
+@media (max-width: 900px) {
+  .site-header { flex-wrap: wrap; padding-top: 1.5rem; }
+  .study { grid-template-columns: minmax(0, 1fr); margin-top: 0; gap: 2.5rem; }
+  .introduction { padding-top: 1.5rem; }
+  .intro-copy { max-width: 48ch; }
+  .study-index { display: none; }
+  .design-notes { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .site-footer { flex-wrap: wrap; }
+}
+
+/* Print the complete invitation using the browser's native Print command. */
+@page { margin: 18mm; }
+@media print {
+  body { background: white; color: black; }
+  .site-header, .introduction, .design-notes, .site-footer, .skip-link { display: none; }
+  .study { display: block; margin: 0; padding: 0; max-width: none; }
+  .letter { border: 0; padding: 0; box-shadow: none; font-size: 11pt; line-height: 1.45; }
+  .letter h2 { font-size: 24pt; margin-block: 12pt 18pt; }
+  .document-kind { margin-bottom: 14pt; }
+  .letter h3 { break-after: avoid; margin-bottom: 7pt; }
+  .event-section { background: none; border-block: 1px solid #777; padding: 12pt 0; }
+  .event-section, .letter-signature { break-inside: avoid; }
+  .letter p, .letter li { orphans: 3; widows: 3; }
+  .letter-body > p { margin-bottom: 8pt; }
+  .event-section, .preparation { margin-block: 12pt; }
+  .event-details, .preparation ol { font-size: 10.5pt; }
+  .event-details > div { margin-top: 5pt; }
+  .preparation li { margin-bottom: 4pt; }
+  .letter-signature { padding-top: 8pt; }
+}

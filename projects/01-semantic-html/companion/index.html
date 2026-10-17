@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="An original correspondence design study exploring readable layouts, semantic HTML, keyboard access, and printing.">
+    <title>Correspondence · A document design study</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#invitation">Skip to the invitation</a>
+    <header class="site-header">
+      <a class="wordmark" href="#top">Correspondence<span class="wordmark-dot" aria-hidden="true">.</span></a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#design-notes">Design notes</a>
+        <a href="../index.html">Course letter <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="top" class="study">
+      <!-- The introduction supplies context without interrupting the letter. -->
+      <div class="introduction">
+        <p class="eyebrow">A document design study</p>
+        <h1>Make room for<br>the message.</h1>
+        <p class="intro-copy">A letter should be easy to read, navigate, and take with you.
+          This small study explores all three, from the first heading to the printed page.</p>
+        <p class="example-label">Original extension to an HTML lab.<br>Fictional invitation; no event is being advertised.</p>
+        <a class="read-link" href="#invitation">Read the invitation <span aria-hidden="true">↓</span></a>
+        <div class="study-index">
+          <p class="eyebrow">In this study</p>
+          <ul>
+            <li>Content before decoration</li>
+            <li>One comfortable reading column</li>
+            <li>A considered paper version</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Article and section headings provide a navigable document outline. -->
+      <article id="invitation" class="letter" tabindex="-1" aria-labelledby="letter-title">
+        <header class="letter-header">
+          <p class="document-kind">An open invitation <span>Fictional example</span></p>
+          <div class="letter-origin">
+            <p class="sender">Morrow<br>Community Workshop</p>
+            <p class="letter-date"><time datetime="2026-09-12">12 September 2026</time></p>
+          </div>
+          <h2 id="letter-title">Bring something<br>worth repairing.</h2>
+        </header>
+        <div class="letter-body">
+          <p>Hello neighbor,</p>
+          <p>A loose chair leg. A torn pocket. A lamp that has gone quiet.
+            Sometimes a small repair is all it takes to keep a familiar thing in use.</p>
+          <p>We are opening the workshop for a morning of shared repairs.
+            Bring one everyday object and a little curiosity. You do not need
+            tools or experience to take part.</p>
+
+          <section class="event-section" aria-labelledby="details-heading">
+            <h3 id="details-heading">The details</h3>
+            <dl class="event-details">
+              <div>
+                <dt>When</dt>
+                <dd><time datetime="2026-10-03">3 October 2026</time><br>
+                  <time datetime="10:00">10:00 a.m.</time> to <time datetime="12:00">noon</time></dd>
+              </div>
+              <div>
+                <dt>Where</dt>
+                <dd>Morrow Community Workshop<br>Main studio, ground floor</dd>
+              </div>
+              <div>
+                <dt>Bring</dt>
+                <dd>One object you can carry comfortably</dd>
+              </div>
+            </dl>
+          </section>
+
+          <section class="preparation" aria-labelledby="prepare-heading">
+            <h3 id="prepare-heading">Before you come</h3>
+            <ol>
+              <li>Choose one object and note what is not working.</li>
+              <li>Pack any loose pieces that belong with it.</li>
+              <li>Bring a bag to take everything home.</li>
+            </ol>
+          </section>
+          <p>There will be places to sit and room to work at your own pace.
+            Watching and asking questions are welcome, too.</p>
+          <p>We may not finish every repair. We can start by understanding the problem together.</p>
+        </div>
+        <footer class="letter-signature">
+          <p>See you at the workbench,</p>
+          <p class="signature">The Morrow workshop team</p>
+        </footer>
+      </article>
+
+      <aside id="design-notes" class="design-notes" aria-labelledby="notes-heading">
+        <div class="notes-intro">
+          <p class="eyebrow">Behind the page</p>
+          <h2 id="notes-heading">Small choices.<br>Clearer reading.</h2>
+          <p>This companion has its own content and stylesheet. The
+            <a href="../index.html">graded course letter</a> remains unchanged.</p>
+          <p class="print-hint">For a paper copy, use your browser's Print command.
+            The print layout keeps the invitation and removes the surrounding navigation.</p>
+        </div>
+        <div class="note-list">
+          <details class="design-note" open>
+            <summary>Give the content a useful structure</summary>
+            <p>Headings identify the invitation and its sections. A description list
+              pairs each event detail with its label. The preparation steps use an
+              ordered list because they describe a sequence.</p>
+          </details>
+          <details class="design-note">
+            <summary>Keep the reading path comfortable</summary>
+            <p>The letter has a limited width and generous line spacing. At narrow
+              widths, the introduction moves above it. Long text can wrap without
+              making the whole page scroll sideways.</p>
+          </details>
+          <details class="design-note">
+            <summary>Use familiar ways to move around</summary>
+            <p>The first keyboard link skips to the invitation. Links and these
+              disclosures have visible focus indicators. Native disclosure elements
+              provide interaction without JavaScript. Their actual keyboard behavior
+              is checked separately from their visual appearance.</p>
+          </details>
+        </div>
+      </aside>
+    </main>
+    <footer class="site-footer">
+      <p>Correspondence · A study by Kenneth Yeaher</p>
+      <a href="https://github.com/kennethyeaher/KY_htmlLab#readme">Project notes</a>
+    </footer>
+  </body>
+</html>
