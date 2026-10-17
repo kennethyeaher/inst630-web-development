@@ -28,6 +28,8 @@ Fresh runs used Node.js 26.10.0, Python 3.14.7, and installed Chrome on macOS. A
 
 Total: 81 passing tests across the existing suites, zero failures and zero skipped tests. The snapshot validator also passed for all 115 copied files and 70 local documentation targets. The same checks are configured in the root GitHub Actions workflow; hosted results are independent of this local run.
 
+The [hosted run at `80d89d8`](https://github.com/kennethyeaher/inst630-web-development/actions/runs/39003956612) passed all five jobs: collection integrity plus all four project checks and test suites. This used Chromium on Ubuntu 24.04 with Node.js 24. A clean temporary clone also passed collection validation. A pattern scan of reachable source and commit text found no credential patterns or unwanted tool attribution. Pattern scanning is a limited check, not a guarantee that every possible secret format is detected.
+
 ## Repeat the checks
 
 Use Python 3 and Node.js 24 or newer. From the collection root:

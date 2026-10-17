@@ -10,7 +10,7 @@ A collected body of INST630 work at the University of Maryland: semantic documen
 <img src="https://img.shields.io/badge/CSS-663399?style=flat-square&amp;logo=css&amp;logoColor=white" alt="CSS">
 <img src="https://img.shields.io/badge/JavaScript-B89B00?style=flat-square&amp;logo=javascript&amp;logoColor=white" alt="JavaScript">
 <img src="https://img.shields.io/badge/projects-7-243b53?style=flat-square" alt="Seven collected projects">
-<a href="https://github.com/kennethyeaher/inst630-web-development/actions/workflows/collection-checks.yml"><img src="https://img.shields.io/github/actions/workflow/status/kennethyeaher/inst630-web-development/collection-checks.yml?branch=main&amp;style=flat-square&amp;label=collection%20checks" alt="Collection checks"></a>
+<a href="https://github.com/kennethyeaher/inst630-web-development/actions/workflows/collection-checks.yml"><img src="https://img.shields.io/badge/GitHub_Actions-view_checks-243b53?style=flat-square&amp;logo=githubactions&amp;logoColor=white" alt="View collection checks on GitHub Actions"></a>
 </p>
 
 <p align="center"><a href="#start-with-these-three">Selected work</a> · <a href="#the-full-collection">All seven projects</a> · <a href="docs/design-patterns.md">Design reasoning</a> · <a href="docs/midterm-guide.md">Midterm guide</a> · <a href="docs/verification.md">Verification</a></p>
