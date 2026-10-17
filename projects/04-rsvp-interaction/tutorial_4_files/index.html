@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RSVP Card | JavaScript Fundamentals</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fcd44b'/%3E%3Cpath d='m16 33 10 10 22-24' fill='none' stroke='%231a1917' stroke-width='6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="wordmark" href="#rsvp-card" aria-label="RSVP card"><span aria-hidden="true">↗</span> RSVP</a>
+    <span class="site-caption">A little less planning. A little more party.</span>
+  </header>
+  <main class="page">
+
+    <!-- the RSVP card -->
+    <div class="card" id="rsvp-card">
+
+      <div class="event-header">
+        <p class="eyebrow">You’re invited</p>
+        <h1 class="event-title">End of Semester Party</h1>
+        <p class="event-meta">Friday, May 9 &middot; 7pm &middot; Someone's Rooftop</p>
+      </div>
+
+      <!-- string: name -->
+      <div class="field">
+        <label for="name-input">Your name</label>
+        <input type="text" id="name-input" placeholder="First name is fine" autocomplete="given-name" maxlength="80">
+      </div>
+
+      <!-- boolean: going or not -->
+      <div class="rsvp-buttons" role="group" aria-label="Will you attend?">
+        <button class="btn btn-yes" id="btn-yes" type="button" aria-pressed="false">Going</button>
+        <button class="btn btn-no"  id="btn-no" type="button" aria-pressed="false">Can't make it</button>
+      </div>
+
+      <!-- number: guest count, hidden until yes -->
+      <div class="guest-field hidden" id="guest-field">
+        <label for="guest-input">Bringing anyone?</label>
+        <input type="number" id="guest-input" value="0" min="0" max="10" step="1" required aria-invalid="false" aria-describedby="guest-hint guest-error">
+        <p class="field-hint" id="guest-hint">0 to 10 additional guests. Leave 0 if it's just you.</p>
+        <p class="field-error" id="guest-error" role="alert"></p>
+        <p class="guest-total" id="guest-total"></p>
+      </div>
+
+      <!-- confirmation messages, hidden until a choice is made -->
+      <div class="response" role="status" aria-atomic="true">
+        <div class="confirmation hidden" id="confirmation"></div>
+        <div class="regret hidden" id="regret"></div>
+      </div>
+      <div class="draft-controls">
+        <label class="checkbox-label" for="remember-draft">
+          <input type="checkbox" id="remember-draft" aria-describedby="draft-status">
+          Remember my draft on this browser
+        </label>
+        <p class="field-hint" id="draft-status" role="status">Off by default. Nothing is saved unless you choose this.</p>
+      </div>
+      <div class="reset-row">
+        <button class="text-button" id="reset-button" type="button">Reset response</button>
+        <button class="text-button hidden" id="undo-button" type="button">Undo reset</button>
+      </div>
+      <p class="action-status" id="action-status" role="status"></p>
+      <p class="demo-note">Practice invitation. No response is sent to an organizer.</p>
+      <noscript><p>This card needs JavaScript to update your response. Enable JavaScript and reload the page to try it.</p></noscript>
+
+    </div>
+
+    <aside class="summary-panel" aria-labelledby="summary-title">
+      <div class="ticket">
+        <div class="ticket-top"><p class="eyebrow">Your response</p><span class="status-pill" id="summary-status">Not selected</span></div>
+        <h2 id="summary-title">A spot for good company.</h2>
+        <p class="summary-intro">Choose a response and see your details come together here.</p>
+        <dl class="summary-details">
+          <div><dt>Name</dt><dd id="summary-name">Your name goes here</dd></div>
+          <div><dt>Attendance</dt><dd id="summary-choice">Choose Going or Can't make it</dd></div>
+          <div><dt>Your party</dt><dd id="summary-party">No response yet</dd></div>
+        </dl>
+        <div class="ticket-footer">
+          <span class="ticket-mark" aria-hidden="true">R / S / V / P</span>
+          <p>Your plans, at a glance.</p>
+        </div>
+      </div>
+      <button class="download-button" id="download-button" type="button" disabled>Download response <span aria-hidden="true">↓</span></button>
+      <p class="field-hint" id="download-hint">Choose a response to download a text copy.</p>
+      <p class="privacy-note">Your details stay here. An optional draft is stored only in this browser. You can clear it with Reset response.</p>
+    </aside>
+
+    <!-- keep the supplied tasks available without competing with the invitation -->
+    <details class="task-reference">
+      <summary>Behind the interaction <span>The original class tasks</span></summary>
+      <div class="tasks-panel">
+
+      <h2>Tutorial 4: Make HTML Interactive</h2>
+      <p class="intro">
+        This completed card uses the five tasks below. Try a response, then
+        change your name or guest count to see the message update.
+      </p>
+
+      <div class="task-group">
+        <h3>Before you write any JS</h3>
+        <p>Open the browser console (F12 → Console tab) and leave it open. 
+           You'll use <code>console.log()</code> to check your work throughout.</p>
+      </div>
+
+      <div class="task-group">
+        <h3>Task 1 — Boolean: Yes / No buttons</h3>
+        <p>
+          When someone clicks <strong>Going</strong>, set <code>isGoing = true</code>
+          and add the <code>active</code> class to that button.
+          When they click <strong>Can't make it</strong>, the opposite.
+          Only one can be active at a time.
+        </p>
+        <p>Skills: <code>addEventListener</code>, <code>classList.add/remove</code>, boolean variables</p>
+      </div>
+
+      <div class="task-group">
+        <h3>Task 2 — Show / hide: guest field</h3>
+        <p>
+          When someone clicks Going, <strong>remove</strong> the <code>hidden</code> class
+          from <code>#guest-field</code> so the guest count appears.
+          When they click Can't make it, add it back.
+        </p>
+        <p>Skills: <code>classList.remove</code>, <code>classList.add</code>, conditional display</p>
+      </div>
+
+      <div class="task-group">
+        <h3>Task 3 — String: confirmation message</h3>
+        <p>
+          After a choice is made, show a message in <code>#confirmation</code> or 
+          <code>#regret</code>. Use the name from the input.
+          Use a template literal: <code>`${getName()} is coming!`</code>
+        </p>
+        <p>
+          A helper function <code>getName()</code> is already written for you in 
+          <code>script.js</code> — read it and understand what it does before using it.
+        </p>
+        <p>Skills: template literals, <code>textContent</code>, showing hidden elements</p>
+      </div>
+
+      <div class="task-group">
+        <h3>Task 4 — Number: guest count</h3>
+        <p>
+          Update the confirmation message to include how many guests they're bringing.
+          Watch out: <code>guestInput.value</code> is a <strong>string</strong>, not a number.
+          Try logging it with <code>typeof</code> to see for yourself.
+          Use <code>Number()</code> to convert it.
+        </p>
+        <p>
+          Stretch: handle the difference between 0 guests ("flying solo") and 
+          1 guest ("1 guest") and 2+ guests ("2 guests").
+        </p>
+        <p>Skills: type conversion, <code>Number()</code>, conditionals</p>
+      </div>
+
+      <div class="task-group">
+        <h3>Task 5 — Live update</h3>
+        <p>
+          Add <code>input</code> event listeners to both the name field and the guest
+          count field so the confirmation message updates as the user types —
+          not just when they first click the button.
+        </p>
+        <p>Skills: <code>addEventListener('input', ...)</code>, reactive updates</p>
+      </div>
+
+      <div class="task-group task-stretch">
+        <h3>Stretch — Operators and comparisons</h3>
+        <p>
+          Add a running total below the guest field: 
+          "X people confirmed so far" — where X is the number of guests plus 1 (the person themselves).
+        </p>
+        <p>
+          Or: disable the Going button if the name field is empty.
+          Check <code>nameInput.value.trim() === ''</code> on every input event.
+        </p>
+      </div>
+
+      </div>
+    </details>
+
+  </main>
+  <footer class="site-footer">Built from the Tutorial 4 starter · HTML, CSS &amp; JavaScript <a href="https://github.com/kennethyeaher/addingJava">View the project ↗</a></footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
