@@ -1,90 +1,106 @@
 <p align="center">
-  <img src="docs/assets/collection.svg" alt="Interfaces, built from the fundamentals. Kenneth Yeaher's seven-project INST630 collection, from semantic structure to charts, maps, and motion." width="100%">
+<picture>
+  <source media="(max-width: 600px)" srcset="docs/assets/cover-mobile.png">
+  <img src="docs/assets/cover.png" alt="From markup to meaningful interaction. Kenneth Yeaher's INST630 collection combines seven runnable projects, readings, HTML history, and publishing." width="100%">
+</picture>
 </p>
 
 <p align="center"><strong>Frontend development through an interaction design lens.</strong><br>
-A collected body of INST630 work at the University of Maryland: semantic documents, responsive layouts, stateful interfaces, and data exploration.</p>
+A University of Maryland course collection: seven working builds, textbook-supported design reasoning, and a study companion for the full course sequence.</p>
 
 <p align="center">
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&amp;logo=html5&amp;logoColor=white" alt="HTML5">
-<img src="https://img.shields.io/badge/CSS-663399?style=flat-square&amp;logo=css&amp;logoColor=white" alt="CSS">
-<img src="https://img.shields.io/badge/JavaScript-B89B00?style=flat-square&amp;logo=javascript&amp;logoColor=white" alt="JavaScript">
-<img src="https://img.shields.io/badge/projects-7-243b53?style=flat-square" alt="Seven collected projects">
-<a href="https://github.com/kennethyeaher/inst630-web-development/actions/workflows/collection-checks.yml"><img src="https://img.shields.io/badge/GitHub_Actions-view_checks-243b53?style=flat-square&amp;logo=githubactions&amp;logoColor=white" alt="View collection checks on GitHub Actions"></a>
+<a href="docs/course-map.md"><img src="https://img.shields.io/badge/course_map-16_components-625879?style=flat-square" alt="Course map: 16 components"></a>
+<img src="https://img.shields.io/badge/stack-HTML_%C2%B7_CSS_%C2%B7_JavaScript-3757c8?style=flat-square" alt="HTML, CSS, and JavaScript">
+<a href="https://github.com/kennethyeaher/inst630-web-development/actions/workflows/collection-checks.yml"><img src="https://img.shields.io/github/actions/workflow/status/kennethyeaher/inst630-web-development/collection-checks.yml?branch=main&amp;style=flat-square&amp;label=checks" alt="Current collection checks"></a>
 </p>
 
-<p align="center"><a href="#start-with-these-three">Selected work</a> · <a href="#the-full-collection">All seven projects</a> · <a href="docs/design-patterns.md">Design reasoning</a> · <a href="docs/midterm-guide.md">Midterm guide</a> · <a href="docs/verification.md">Verification</a></p>
+<p align="center"><a href="#selected-work">Selected work</a> · <a href="#the-full-course">The full course</a> · <a href="docs/case-studies.md">Case studies</a> · <a href="docs/reading-companion.md">Reading companion</a> · <a href="docs/midterm-guide.md">Midterm practice</a></p>
 
-## Start with these three
+## A quick way into the work
 
-These projects show the clearest progression from an interface's appearance to its behavior under changing input, interrupted work, and failed dependencies. The images are browser captures from the original project repositories, not new captures of this collection.
+| Review question | Start here | Look for |
+| --- | --- | --- |
+| Can the interface keep related views consistent? | [Restaurant library lab](docs/case-studies.md#restaurant-library-lab) | One filtered collection, multiple representations, a separate shortlist |
+| What happens after a mistake or interruption? | [RSVP interaction](docs/case-studies.md#rsvp-interaction) | Validation, optional drafts, reset, and Undo |
+| Does the layout support the task? | [Recipe redesign](docs/case-studies.md#recipe-redesign) | Before and after, reading order, native controls, print |
+| How does this connect to the class? | [All 16 course components](docs/course-map.md) | GitPages, Homework 1–7, HTML History, and Readings 1–7 |
 
-### 01 / Restaurant library lab
+## Selected work
 
-**One dataset, several ways to make a decision.** Shared filters coordinate charts, a map, cards, and a temporary comparison shortlist. Chart selections narrow the collection; exact-value tables offer another route through the same data. Each library has a text fallback.
+### Restaurant library lab · Homework 7
 
-<img src="projects/07-external-libraries/docs/assets/ratings.png" alt="Restaurant library lab showing a horizontal ratings chart, sample mean, and an exact-value table with Explore buttons." width="100%">
+**Keep the decision consistent across views.** Search and filters define one matching collection for charts, a map, and cards. A separate shortlist retains up to three comparison choices as the visible results change. Native table actions offer the same chart exploration without requiring a pointer on the canvas.
 
-[Open original demo](https://kennethyeaher.github.io/externalLibraries/tutorial_7_external/) · [Read the project](projects/07-external-libraries/README.md) · [Inspect chart preparation](projects/07-external-libraries/tutorial_7_external/chart-data.js)
+<a href="https://kennethyeaher.github.io/externalLibraries/tutorial_7_external/"><img src="docs/assets/library.png" alt="Library lab: a ratings chart and exact-value table excerpt beside an illustrative map and equivalent restaurant list. Shared filters coordinate the views." width="100%"></a>
 
-**Worth inspecting:** synchronization across views, explicit chart scales, cancellation of repeated animation, and graceful degradation. The eight restaurants are course fixtures. Map positions are illustrative because the source has no coordinates; prices and ratings are sample values.
+[Try the demo](https://kennethyeaher.github.io/externalLibraries/tutorial_7_external/) · [Read the case study](docs/case-studies.md#restaurant-library-lab) · [Inspect the implementation](projects/07-external-libraries/tutorial_7_external/script.js) · [Inspect browser tests](projects/07-external-libraries/tests/browser.test.cjs)
 
-### 02 / RSVP interaction
+**Design reasoning:** Dynamic Queries in *Designing Interfaces* supports immediate feedback as filters change. Text tables, lists, and static cards retain the information if an individual library fails. The [shared-state diagram](docs/case-studies.md#restaurant-library-lab) explains how selection and comparison stay separate.
 
-**A small form with a complete recovery path.** Choose an attendance response, enter guests, optionally save a draft, reset with Undo, and download a valid response. The conditional guest field makes the interface respond to the decision someone has actually made.
+**Scope:** eight course sample restaurants; illustrative map positions; temporary shortlist; no current restaurant information or market claims.
 
-<img src="projects/04-rsvp-interaction/docs/assets/preview-1440.png" alt="RSVP interface with attendance choices, guest input, and a live response summary." width="100%">
+### RSVP interaction · Homework 4
 
-[Open original demo](https://kennethyeaher.github.io/addingJava/tutorial_4_files/) · [Read the project](projects/04-rsvp-interaction/README.md) · [Inspect behavior tests](projects/04-rsvp-interaction/tests/rsvp.test.cjs)
+**A small form still needs a recovery path.** Going reveals the guest field. Invalid counts explain what to correct. Optional drafts survive a reload when saving is enabled. Reset removes the response and offers one Undo opportunity before another edit or reload.
 
-**Worth inspecting:** exclusive selection, numeric validation, optional storage, and invalid-state recovery. This is a local practice interaction; it does not register attendance or send a response to an organizer.
+<a href="https://kennethyeaher.github.io/addingJava/tutorial_4_files/"><img src="docs/assets/rsvp.png" alt="RSVP desktop composition beside a mobile excerpt. The interface combines exclusive attendance choices, guest input, a live summary, optional saving, and reset recovery." width="100%"></a>
 
-### 03 / Recipe redesign
+[Try the demo](https://kennethyeaher.github.io/addingJava/tutorial_4_files/) · [Read the case study](docs/case-studies.md#rsvp-interaction) · [Inspect state updates](projects/04-rsvp-interaction/tutorial_4_files/script.js) · [Inspect browser tests](projects/04-rsvp-interaction/tests/rsvp.test.cjs)
 
-**Make a reading task work as a cooking task.** A responsive recipe separates timing, ingredients, and numbered steps. Native ingredient checkboxes and a clear action work without JavaScript; the print layout retains the cooking instructions.
+**Design reasoning:** Progressive Disclosure keeps guest input relevant to attendance. Norman's feedback principle supports making the choice, validation result, and reset recovery visible. The [case study](docs/case-studies.md#rsvp-interaction) traces these transitions rather than treating the form as one success state.
 
-<img src="projects/03-recipe-redesign/docs/assets/after-redesign-1440.png" alt="Recipe redesign with a blue title, timing summary, ingredient checklist, and numbered cooking method." width="100%">
+**Scope:** a practice invitation. Saving defaults off, the draft stays in that browser, and no response is sent to an organizer.
 
-[Open original demo](https://kennethyeaher.github.io/uglyPageCute/) · [Read the project](projects/03-recipe-redesign/README.md) · [Review design decisions](projects/03-recipe-redesign/docs/design-notes.md)
+### Recipe redesign · Homework 3
 
-**Worth inspecting:** semantic reading order, Grid and Flexbox responsibilities, native form behavior, and print styles. The original project includes before-and-after captures and a scoped verification record.
+**Organize the page around cooking.** Planning information, ingredients, and numbered instructions have different jobs. The redesign gives them a readable hierarchy, a responsive composition, native ingredient checks, and a separate print treatment.
+
+<a href="https://kennethyeaher.github.io/uglyPageCute/"><img src="docs/assets/recipe.png" alt="Before-and-after recipe excerpts: the supplied bright starter beside a redesign with clear title, timing, image, ingredients, and ordered steps. The native checklist works without JavaScript." width="100%"></a>
+
+[Try the demo](https://kennethyeaher.github.io/uglyPageCute/) · [Read the case study](docs/case-studies.md#recipe-redesign) · [Inspect the document](projects/03-recipe-redesign/index.html) · [Original design notes](projects/03-recipe-redesign/docs/design-notes.md)
+
+**Design reasoning:** Krug connects visual hierarchy to prominence, grouping, and nesting. Stimac explains how spacing expresses relationships and how semantic HTML provides a useful baseline. The checklist uses that baseline directly.
+
+**Scope:** before-and-after captures show the design change; they do not establish faster cooking, fewer errors, or a measured usability improvement.
+
+## The full course
+
+<img src="docs/assets/atlas.png" alt="Homework progression: semantic HTML, Grid and Flexbox, recipe redesign, JavaScript interaction, array methods, async loading, and external libraries." width="100%">
+
+The collection follows the course sequence, including the discussion and publishing work alongside the builds.
+
+| Course strand | Included here | Open |
+| --- | --- | --- |
+| **GitPages** | Publishing notes and links to the original hosted project demos | [Publishing evidence](docs/course-map.md#gitpages) |
+| **Homework 1–7** | Seven runnable source snapshots with original READMEs, screenshots, credits, and existing tests | [Project directory](projects/) · [Source register](docs/source-register.md) |
+| **HTML History** | A new source-backed companion linking HTML's document origins to the later interface work | [History notes](docs/reading-companion.md#html-history) |
+| **Reading Assignments 1–7** | New topic companions connecting HTML, layout, design, JavaScript, data, async behavior, and libraries to the code | [Reading companion](docs/reading-companion.md) |
+| **Midterm preparation** | Eight source-based practice sections with expandable answer checks | [Practice guide](docs/midterm-guide.md) |
+
+The [full course map](docs/course-map.md) lists all 16 supplied components and the provided due dates. **Original reading responses and the HTML History discussion post were not supplied.** The companions are clearly labeled new study material; they are not represented as submitted assignments.
 
 <details>
-<summary><strong>Compare the mobile compositions</strong></summary>
-<br>
-<table>
-<tr><th>Library lab</th><th>RSVP</th><th>Recipe</th></tr>
-<tr>
-<td width="33%"><img src="projects/07-external-libraries/docs/assets/explorer-mobile.png" alt="Library lab stacked on a narrow screen." width="100%"></td>
-<td width="33%"><img src="projects/04-rsvp-interaction/docs/assets/preview-375.png" alt="RSVP choices and summary stacked at 375 pixels." width="100%"></td>
-<td width="33%"><img src="projects/03-recipe-redesign/docs/assets/after-redesign-375.png" alt="Recipe timing, image, and ingredients in one column at 375 pixels." width="100%"></td>
-</tr>
-</table>
+<summary><strong>Open any of the seven builds</strong></summary>
+
+| Homework | Implementation | Original demo |
+| --- | --- | --- |
+| 1 · HTML Lab | [Course letter + Correspondence](projects/01-semantic-html/README.md) | [Open](https://kennethyeaher.github.io/KY_htmlLab/companion/) |
+| 2 · Grids and Flex | [Design Notes](projects/02-grid-and-flex/README.md) | [Open](https://kennethyeaher.github.io/KY_gridsFlexLab/) |
+| 3 · Make An Ugly Page Cute | [Recipe redesign](projects/03-recipe-redesign/README.md) | [Open](https://kennethyeaher.github.io/uglyPageCute/) |
+| 4 · Adding JavaScript | [RSVP interaction](projects/04-rsvp-interaction/README.md) | [Open](https://kennethyeaher.github.io/addingJava/tutorial_4_files/) |
+| 5 · Array Methods For Data | [Table for eight](projects/05-array-methods/README.md) | [Open](https://kennethyeaher.github.io/arrayMethods/tutorial_5_arrays/) |
+| 6 · Async/Await and APIs | [Restaurant directory](projects/06-async-directory/README.md) | [Open](https://kennethyeaher.github.io/asyncAndAPIs/tutorial_6_api/) |
+| 7 · External Libraries | [Restaurant library lab](projects/07-external-libraries/README.md) | [Open](https://kennethyeaher.github.io/externalLibraries/tutorial_7_external/) |
+
 </details>
 
-## The full collection
+## Design reasoning you can trace
 
-The order follows the course's technical progression. Every folder is runnable on its own and includes its original project README.
+The [reading register](docs/design-patterns.md#reading-register) gives verified page locations in four supplied books: *Designing Interfaces*, Norman's *The Design of Everyday Things*, Krug's *Don't Make Me Think, Revisited*, and Stimac's *Design for Developers*. Each connection points to a behavior or composition in the source and explains its limits.
 
-| Project | Focus | Inspect | Original demo |
-| --- | --- | --- | --- |
-| **01 · Semantic HTML** | A course letter plus an original Correspondence companion; document structure, reading order, print | [Source and context](projects/01-semantic-html/README.md) | [Correspondence](https://kennethyeaher.github.io/KY_htmlLab/companion/) |
-| **02 · Grid and Flex** | Repeated cards, nested groups, responsive stacking, an expandable layout guide | [Source and context](projects/02-grid-and-flex/README.md) | [Design Notes](https://kennethyeaher.github.io/KY_gridsFlexLab/) |
-| **03 · Recipe redesign** | Hierarchy, responsive composition, native checklists, print | [Source and context](projects/03-recipe-redesign/README.md) | [Recipe](https://kennethyeaher.github.io/uglyPageCute/) |
-| **04 · RSVP interaction** | DOM events, explicit state, validation, drafts, Undo | [Source and context](projects/04-rsvp-interaction/README.md) | [RSVP](https://kennethyeaher.github.io/addingJava/tutorial_4_files/) |
-| **05 · Array methods** | `forEach`, `filter`, `map`, `find`; search, sort, and favorites | [Source and context](projects/05-array-methods/README.md) | [Table for eight](https://kennethyeaher.github.io/arrayMethods/tutorial_5_arrays/) |
-| **06 · Async directory** | HTTP status handling, JSON validation, loading states, retry, pure model logic | [Source and context](projects/06-async-directory/README.md) | [Directory](https://kennethyeaher.github.io/asyncAndAPIs/tutorial_6_api/) |
-| **07 · External libraries** | Chart.js, Leaflet, GSAP; coordinated views, comparison, exports, fallbacks | [Source and context](projects/07-external-libraries/README.md) | [Library lab](https://kennethyeaher.github.io/externalLibraries/tutorial_7_external/) |
+The [case studies](docs/case-studies.md) follow the problem, implementation, reading connection, failure path, and evidence. The [visual system](docs/visual-system.md) documents how the presentation uses hierarchy, grouping, and spacing. Textbook PDFs and page imagery are not redistributed.
 
-## What connects the work
-
-I kept the projects close to the browser: meaningful HTML, explicit CSS layout, and JavaScript where the task needs behavior. The later exercises build on the same questions as the earlier ones: what should someone notice first, what should change after an action, and how can they recover when something goes wrong?
-
-The [design pattern notes](docs/design-patterns.md) connect specific implementations to *Designing Interfaces*, third edition, by Jenifer Tidwell, Charles Brewer, and Aynne Valencia. They explain the choices and their limits. The [midterm guide](docs/midterm-guide.md) turns the source into practice questions with answer checks.
-
-## Run the collection
-
-Clone this repository, then start a static server from its root:
+## Run and inspect
 
 ```sh
 git clone https://github.com/kennethyeaher/inst630-web-development.git
@@ -92,31 +108,34 @@ cd inst630-web-development
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-Open [the local project index](http://127.0.0.1:8000/). Each entry opens a collected application. Use HTTP rather than `file://`, because the later exercises fetch JSON and use JavaScript modules. The applications have no build step. External fonts, libraries, and map tiles require network access where used.
+Open [the local project index](http://127.0.0.1:8000/). Each entry opens a collected application. Use HTTP for the later JSON and module-based exercises. There is no application build step; external libraries, fonts, and map tiles need network access where used.
 
-For verification, use Python 3 and Node.js 24 or newer:
+With Python 3 and Node.js 24 or newer:
 
 ```sh
 python3 scripts/check_collection.py
 python3 scripts/run_checks.py --install
 ```
 
-The first command validates snapshot hashes, documentation links, and JavaScript syntax without installing packages. The second installs locked development dependencies and runs the four JavaScript projects' own checks and browser suites in Chromium. For an installed Chrome browser, use `BROWSER_CHANNEL=chrome python3 scripts/run_checks.py --install`. See [verification](docs/verification.md) for exact scope and current results.
+The first command verifies source hashes, local documentation targets, and JavaScript syntax. The second installs locked development packages and runs the four JavaScript projects' existing checks and browser suites. Use `BROWSER_CHANNEL=chrome` for an installed Chrome browser. The [verification record](docs/verification.md) separates current collection checks, dated project results, and remaining manual checks.
 
-## Source, credit, and history
+## Evidence, credit, and history
 
-This is a collected snapshot of seven existing projects, not a claim that their original development began here. [The source register](docs/source-register.md) links each original repository at the imported revision. [`catalog.json`](catalog.json) records SHA-256 hashes for every copied file. Original project history remains in those repositories; this collection's commits describe the actual assembly and documentation work.
+All 115 copied source files are registered by revision and hash in [`catalog.json`](catalog.json). Original development history remains in the seven linked repositories. Collection commits record actual assembly, documentation, and presentation work. The artwork arranges earlier browser captures; it does not depict newly tested application states.
 
-Course starter content, exercise instructions, sample restaurant data, and supplied styles remain credited in each project. The original READMEs and verification notes are preserved as historical records; their dates, root-relative commands, and claims about a first commit refer to the original repositories. The root instructions above describe this collection. Nested CI workflows and the separate library exercise answer file are omitted; the catalog lists those exclusions. Textbooks, local notes, dependencies, and untracked material are not included.
+<details>
+<summary><strong>Source boundaries and reuse</strong></summary>
 
-There is no blanket license for the collection. Consult individual project credits and upstream terms before reuse. Sample data and demonstration interactions should be read in their educational context. The screenshots and automated checks do not establish full accessibility conformance, production readiness, or measured usability outcomes.
+Course starter content, supplied styles, sample records, and third party assets retain their credits inside the project folders. The original READMEs and verification notes keep their historical context: their root commands, dates, and first-commit descriptions refer to the original repositories. [The source register](docs/source-register.md) lists the exact imported revisions and exclusions.
+
+No blanket license is added for supplied course content or other credited material. Consult upstream terms before reuse. The root instructions describe this collection. Nested original CI workflows and the separate supplied library answer file are omitted; private notes, textbooks, dependencies, and untracked files are excluded.
+
+Automated checks and screenshot review do not establish full accessibility conformance, production readiness, or measured usability outcomes. [Verification](docs/verification.md) records the actual scope.
+
+</details>
 
 ---
 
-## Author
-
 **Kenneth Yeaher**<br>
 MS in Human Computer Interaction · University of Maryland, College Park<br>
-[![LinkedIn: Kenneth Yeaher](https://img.shields.io/badge/LinkedIn-Kenneth_Yeaher-0A66C2?style=flat-square)](https://www.linkedin.com/in/kennethyeaher/)
-
-`Interface design` · `Frontend development` · `Interaction behavior` · `Data exploration`
+[GitHub](https://github.com/kennethyeaher) · [LinkedIn](https://www.linkedin.com/in/kennethyeaher/)
